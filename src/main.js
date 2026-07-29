@@ -3,6 +3,9 @@ import javascriptLogo from "./assets/javascript.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import { setupCounter } from "./counter.js";
+import { ButtonAdd } from "./components/ButtonAdd.js";
+
+new ButtonAdd("add article").build();
 
 document.querySelector("#app").innerHTML = `
 <section id="center">
