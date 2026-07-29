@@ -1,0 +1,33 @@
+name: Release prod
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Build
+        run: npm run build
+      - name: Zip
+        run: |
+          cd dist
+          zip -r ../dist.zip .
+          cd ..
+      - name: create release
+        run: |
+          gh release create "${{ github.ref_name }}" \
+          dist.zip \
+          --title "${{ github.ref_name }}" \
+          --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
