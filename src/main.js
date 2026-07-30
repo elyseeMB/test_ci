@@ -3,6 +3,11 @@ import javascriptLogo from "./assets/javascript.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import { setupCounter } from "./counter.js";
+import { ButtonAdd } from "./components/ButtonAdd.js";
+import { Card } from "./components/Card.js";
+
+new ButtonAdd("add article").build();
+new Card().build();
 
 document.querySelector("#app").innerHTML = `
 <section id="center">
